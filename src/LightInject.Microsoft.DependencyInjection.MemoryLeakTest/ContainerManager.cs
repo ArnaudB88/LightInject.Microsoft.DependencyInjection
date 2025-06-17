@@ -34,6 +34,8 @@ namespace LightInject.MemoryLeakTest
                 if (!_containerIsConfigured)
                 {
                     Container = existingContainer ?? new ServiceContainer();
+                    //The line below fixes the memory leak issue
+                    //Container = existingContainer ?? new ServiceContainer(ContainerOptions.Default.Clone().WithMicrosoftSettings());
 
                     //https://www.lightinject.net/#assembly-scanning
                     //issue https://github.com/seesharper/LightInject/issues/358 => use reflection
